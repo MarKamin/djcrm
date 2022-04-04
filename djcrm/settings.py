@@ -50,8 +50,6 @@ INSTALLED_APPS = [
         # Third party apps
     'crispy_forms',
     "crispy_tailwind",
-    'tailwind',
-    'theme',
 ]
 
 MIDDLEWARE = [
@@ -139,10 +137,16 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static'
-]
-STATIC_ROOT = 'static_root'
+#STATICFILES_DIRS = [
+  #  BASE_DIR / 'static'
+#]
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+#STATIC_ROOT = 'static_root'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
