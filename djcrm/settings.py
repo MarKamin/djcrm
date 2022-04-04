@@ -31,9 +31,6 @@ SECRET_KEY = env('SECRET_KEY')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
-
 ALLOWED_HOSTS = []
 
 
@@ -48,9 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'lead',
     'agents',
+    "whitenoise.runserver_nostatic",
+
+        # Third party apps
     'crispy_forms',
     "crispy_tailwind",
-    "whitenoise.runserver_nostatic",
+    'tailwind',
+    'theme',
 ]
 
 MIDDLEWARE = [
@@ -135,14 +136,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
-#STATIC_ROOT = 'static_root'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = 'static_root'
+#STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
